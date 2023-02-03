@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const logger = require("./helpers/logger");
 const mongoose = require("mongoose");
 const apiRouter = require("./routes/api");
+const adminApiRouter = require("./routes/adminApi");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/", apiRouter);
+app.use("/admin/api/", adminApiRouter);
 
 const port = process.env.PORT || 5000;
 

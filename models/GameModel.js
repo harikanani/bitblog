@@ -1,58 +1,56 @@
 const mongoose = require("mongoose"),
 	Schema = mongoose.Schema;
 
-const UserSchema = new Schema(
+const GameSchema = new Schema(
 	{
-		username: {
+		gameId: {
 			type: String,
 			required: true,
 			unique: true,
 		},
-		password: {
+		gameStartTime: {
+			type: Date,
+			required: true,
+		},
+		gameEndTime: {
+			type: Date,
+			required: true,
+		},
+		gamePoreTime: {
+			type: Date,
+			required: true,
+		},
+		gameResultTime: {
+			type: Date,
+			required: true,
+		},
+		gameStatus: {
 			type: String,
 			required: true,
 		},
-		email: {
-			type: String,
-			required: true,
-			unique: true,
-		},
-		phone: {
-			type: String,
-			required: true,
-			unique: true,
-		},
-		firstName: {
+		gameResult: {
 			type: String,
 			required: true,
 		},
-		lastName: {
+		gameWinner: {
 			type: String,
 			required: true,
 		},
-		addressLineOne: {
-			type: String,
+		gamePlayers: {
+			type: Array,
 			required: true,
 		},
-		addressLineTwo: {
+		gamePlayersCount: {
+			type: Number,
+			required: true,
+		},
+		winningColour: {
 			type: String,
 			required: false,
 		},
-		city: {
-			type: String,
-			required: true,
-		},
-		state: {
-			type: String,
-			required: true,
-		},
-		postalCode: {
-			type: String,
-			required: true,
-		},
-		country: {
-			type: String,
-			required: true,
+		winningNumber: {
+			type: Number,
+			required: false,
 		},
 		is_deleted: {
 			type: Boolean,
@@ -65,9 +63,7 @@ const UserSchema = new Schema(
 			default: true,
 		},
 	},
-	{ timestamps: true, versionKey: false, collection: "users" },
+	{ timestamps: true, versionKey: false, collection: "games" },
 );
 
-const UserModel = mongoose.model("Users", UserSchema);
-
-module.exports = UserModel;
+module.exports = GameModel = mongoose.model("games", GameSchema);
